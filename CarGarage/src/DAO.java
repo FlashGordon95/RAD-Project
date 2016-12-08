@@ -50,5 +50,26 @@ public class DAO {
 		
 		
 	}
+	public ArrayList<Model> getModelDetails() throws Exception{
+		ArrayList<Model> models = new ArrayList<>();
+		Connection conn = mysqlDS.getConnection();
+		PreparedStatement myStmt = conn.prepareStatement("SELECT * from model");
+		
+		ResultSet rs = myStmt.executeQuery();
+		while(rs.next()){
+			 String manu_code = rs.getString("manu_code");
+			 String model_code = rs.getString("model_code");
+			 String model_name = rs.getString("model_name");
+			 
+			 String model_desc = rs.getString("model_desc");
+			 
+			 models.add(new Model(manu_code, model_code, model_name, model_desc));
+		}
+		
+		return models;
+		
+		
+		
+	}
 	
 	  }
