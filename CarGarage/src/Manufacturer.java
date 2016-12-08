@@ -22,14 +22,6 @@ public class Manufacturer {
 		this.manu_details = courseName;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getManu_code() {
 		return manu_code;
 	}
