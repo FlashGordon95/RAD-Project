@@ -72,4 +72,30 @@ public class DAO {
 		
 	}
 	
+	public ArrayList<Vehicle> getVehicleDetails() throws Exception{
+		ArrayList<Vehicle> vehicles = new ArrayList<>();
+		Connection conn = mysqlDS.getConnection();
+		PreparedStatement myStmt = conn.prepareStatement("SELECT * from vehicle");
+		
+		ResultSet rs = myStmt.executeQuery();
+		while(rs.next()){
+			 String reg = rs.getString("reg");
+			 String manu_code = rs.getString("manu_code");
+			 String model_code = rs.getString("model_code");
+			 
+			 int mileage = rs.getInt("mileage");
+			 double price = rs.getDouble("price");
+			 String colour = rs.getString("colour");
+			 String fuel = rs.getString("fuel");
+			 
+			 vehicles.add(new Vehicle( reg,  manu_code,  model_code,  mileage,  price,  colour,
+						 fuel));
+		}
+		
+		return vehicles;
+		
+		
+		
+	}
+	
 	  }

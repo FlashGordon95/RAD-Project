@@ -6,54 +6,69 @@
       xmlns:f="http://java.sun.com/jsf/core"
       >
     <h:head>
-    <title>Models</title>
+    <title>Vehicles</title>
     	
     </h:head>
 
     <h:body>
-    	<h1>Models</h1>
-		<h:button value="Add Model" outcome="addStudent" />
- 		<h:dataTable value="#{modelController.loadModels()}" var="s"
+    	<h1>Vehicles</h1>
+		<h:button value="Add Vehicle" outcome="addStudent" />
+ 		<h:dataTable value="#{vehicleController.loadVehicles()}" var="v"
     			styleClass="order-table"
     			headerClass="order-table-header"
     			rowClasses="order-table-odd-row,order-table-even-row"
     		>
     	
-
+			<h:column>
+    			<f:facet name="header">
+    				Reg
+				</f:facet>
+				#{v.reg}	
+    		</h:column>
     		<h:column>
     			<f:facet name="header">
     				Manufacturer Code
     			</f:facet>
-    			#{s.manu_code}
+    			#{v.manu_code}
     		</h:column>
 
     		<h:column>
     			<f:facet name="header">
     				Manufacturer Code
 				</f:facet>
-				#{s.model_code}	
+				#{v.model_code}	
     		</h:column>
 
  			<h:column>
     			<f:facet name="header">
-    				Manufacturer Details
+    				Mileage
 				</f:facet>
-    			#{s.model_name}	
+    			#{v.mileage}	
     		</h:column>
     		<h:column>
     			<f:facet name="header">
-    				Manufacturer Details
+    				Price
 				</f:facet>
-    			#{s.model_desc}	
+    			#{v.price}	
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">
+    				Colour
+				</f:facet>
+    			#{v.colour}	
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">
+    				Fuel
+				</f:facet>
+    			#{v.fuel}	
     		</h:column>
     		
     		<h:column>
     			<f:facet name="header">
     				Action
 				</f:facet>
-    				<h:link value="Update" outcome="manage_manufacturers" />
-    				<br/>
-    				<h:link value="Delete" outcome="manage_manufacturers" />
+    				<h:link value="All Details" outcome="manage_manufacturers" />
     		<br/>
     		
     		</h:column>
