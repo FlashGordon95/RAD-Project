@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		  xmlns:h="http://xmlns.jcp.org/jsf/html"
+		  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	  	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+<h:head>
+    <title>Garage - Add Model</title>
+    
+   
+</h:head>
+<h:body>
+ <h1>Add Model</h1>
+ 		<!-- If we encounter an SQL Exception when trying to submit. Show the user the error -->
+		<h:messages globalOnly="true" style="color: red"/>
+		<h:form>
+		<!-- The Manufacturer Code, code and name field are required for input and will prompt if no input -->
+			Manufacturer Code: <h:inputText id="manu_code" required="true" requiredMessage="Manufacturer code is mandatory!" 
+							   value="#{model.manu_code}" p:placeholder="e.g : TOY"/>
+			 <h:message for="manu_code" style = "red"/>		   
+			Code: <h:inputText id="model_code" required="true" requiredMessage="Model code is mandatory!" 
+							   value="#{model.model_code}" p:placeholder="e.g : COR"/>
+		    <h:message for="model_code" style = "red"/>
+		   
+		    <br/><br/>
+		    Name: <h:inputText id="model_name" required="true" requiredMessage="Name is mandatory" 
+							   value="#{model.model_name}" p:placeholder="e.g : Corolla"/>
+		    <h:message for="model_name" style = "red"/>
+		    <br/><br/>
+		    Details: <h:inputText id="model_desc" value="#{model.model_desc}" 
+		    						  p:placeholder="Enter manufaturer description"/>
+		    <h:message for="model_desc" style="red"/>
+		    <br/><br/>
+		    <!-- Attempt to add our object to the DB. Will either redirect to the manufacturers page or throw an error to user on screen -->
+			<h:commandButton value="Add Model"
+			action="#{modelController.addModel(model)}" />
+			
+			<br/>
+			<h:link value="Back to Home" outcome="index"/>			
+		</h:form>
+</h:body>
+</html>

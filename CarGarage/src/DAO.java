@@ -33,6 +33,19 @@ public class DAO {
 		myStmt.executeUpdate();
 		
 	}
+public void addModel(Model s) throws SQLException {
+		
+		Connection conn = mysqlDS.getConnection();
+		PreparedStatement myStmt = conn.prepareStatement("INSERT into model values(?,?,?,?)");
+		myStmt.setString(1, s.getManu_code()); 
+		myStmt.setString(2,s.getModel_code()); 
+		myStmt.setString(3, s.getModel_name()); 
+		myStmt.setString(4, s.getModel_desc()); 
+		// TODO Auto-generated method stub
+		
+		myStmt.executeUpdate();
+		
+	}
 	
 	public ArrayList<Manufacturer> getManufacturerDetails() throws Exception{
 		ArrayList<Manufacturer> manufacturers = new ArrayList<>();
