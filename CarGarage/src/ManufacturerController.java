@@ -3,7 +3,11 @@
 
 import java.util.ArrayList;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 @ManagedBean
 public class ManufacturerController {
@@ -23,16 +27,22 @@ public class ManufacturerController {
 	}
 	
 	
-	/*public String addStudent(Manufacturer s) throws Exception{
+	public void addManufacturer(Manufacturer s) throws Exception{
 		try{
-			dao.addStudent(s);
-			return "Added to DB";
-		} catch (Exception e){
-			return e.toString();
+			dao.addManufacturer(s);
+			System.out.println("Manufacturer is unique, adding to DB");
+			/* internal redirection */
+			FacesContext.getCurrentInstance().getExternalContext().redirect("manage_manufacturers.xhtml");
+		}catch (MySQLIntegrityConstraintViolationException e) {
+			FacesMessage message = new FacesMessage(e.getMessage());
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		}
+		catch (Exception e){
+			e.printStackTrace();
 		}
 		
 	}
-	*/
+	
 	public ArrayList<Manufacturer> loadManufacturers() throws Exception{
 		return manufacturers = dao.getManufacturerDetails();
 		

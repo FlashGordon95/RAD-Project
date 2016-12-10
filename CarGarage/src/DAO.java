@@ -5,6 +5,7 @@
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.faces.context.FacesContext;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -20,16 +21,18 @@ public class DAO {
 	     String jndiName = "java:comp/env/jdbc/garage";
 	     mysqlDS = (DataSource) context.lookup(jndiName);
 	   }
-	/*public void addStudent(Manufacturer s) throws SQLException {
+	public void addManufacturer(Manufacturer s) throws SQLException {
 		
 		Connection conn = mysqlDS.getConnection();
-		PreparedStatement myStmt = conn.prepareStatement("INSERT into students values(?,?,?)");
-		myStmt.setInt(1, s.getId()); 
-		myStmt.setString(2,s.getStudentName()); 
-		myStmt.setString(3, s.getCourseID()); 
+		PreparedStatement myStmt = conn.prepareStatement("INSERT into manufacturer values(?,?,?)");
+		myStmt.setString(1, s.getManu_code()); 
+		myStmt.setString(2,s.getManu_name()); 
+		myStmt.setString(3, s.getManu_details()); 
 		// TODO Auto-generated method stub
 		
-	}*/
+		myStmt.executeUpdate();
+		
+	}
 	
 	public ArrayList<Manufacturer> getManufacturerDetails() throws Exception{
 		ArrayList<Manufacturer> manufacturers = new ArrayList<>();
