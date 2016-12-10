@@ -46,6 +46,23 @@ public void addModel(Model s) throws SQLException {
 		myStmt.executeUpdate();
 		
 	}
+public void addVehicle(Vehicle s) throws SQLException {
+	
+	Connection conn = mysqlDS.getConnection();
+	PreparedStatement myStmt = conn.prepareStatement("INSERT into vehicle values(?,?,?,?,?,?,?)");
+	myStmt.setString(1, s.getReg()); 
+	myStmt.setString(2,s.getManu_code()); 
+	myStmt.setString(3, s.getModel_code()); 
+	myStmt.setInt(4, s.getMileage()); 
+	myStmt.setDouble(5, s.getPrice()); 
+	myStmt.setString(6, s.getColour()); 
+	myStmt.setString(7, s.getFuel()); 
+	//May want to change this to enum , will need to change vehicle.java attribute to enum also
+	// TODO Auto-generated method stub
+	
+	myStmt.executeUpdate();
+	
+}
 	
 	public ArrayList<Manufacturer> getManufacturerDetails() throws Exception{
 		ArrayList<Manufacturer> manufacturers = new ArrayList<>();
