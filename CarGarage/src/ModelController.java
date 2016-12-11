@@ -5,11 +5,13 @@ import java.util.ArrayList;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 @ManagedBean
+@SessionScoped
 public class ModelController {
 	private ArrayList<Model> models;
 	private DAO dao;

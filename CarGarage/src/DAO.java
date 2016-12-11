@@ -5,6 +5,8 @@
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.annotation.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -13,7 +15,8 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+@ManagedBean
+@SessionScoped
 public class DAO {
 	private DataSource mysqlDS;
 	public DAO() throws Exception {
