@@ -1,6 +1,4 @@
 
-
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -10,18 +8,28 @@ public class Manufacturer {
 	private String manu_code;
 	private String manu_name;
 	private String manu_details;
-	
-	public Manufacturer(){
-		
+
+	/*
+	 * 
+	 * Constructors for Manufacturer Object
+	 * 
+	 */
+	public Manufacturer() {
+
 	}
-	
-	public Manufacturer( String studentName, String courseID, String courseName) {
+
+	public Manufacturer(String studentName, String courseID, String courseName) {
 		super();
 		this.manu_code = studentName;
 		this.manu_name = courseID;
 		this.manu_details = courseName;
 	}
 
+	/*
+	 * 
+	 * Getters and setters for Manufacturer Object
+	 * 
+	 */
 	public String getManu_code() {
 		return manu_code;
 	}
@@ -45,8 +53,5 @@ public class Manufacturer {
 	public void setManu_details(String manu_details) {
 		this.manu_details = manu_details;
 	}
-	
-	
 
 }
-
