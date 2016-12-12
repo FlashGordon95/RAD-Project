@@ -1,0 +1,12 @@
+
+*.dat
+
+.metadata/.plugins/org.eclipse.core.resources/.projects/CarGarage/.markers
+
+*.version
+
+*.resources
+
+*.prefs
+
+*.fnm
