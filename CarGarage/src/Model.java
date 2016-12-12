@@ -1,6 +1,4 @@
 
-
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -11,19 +9,30 @@ public class Model {
 	private String model_code;
 	private String model_name;
 	private String model_desc;
-	
-	public Model(){
-		
+
+	/*
+	 * 
+	 * Constructors for Model Object
+	 * 
+	 */
+	public Model() {
+
 	}
-	
+
 	public Model(String manu_name, String model_code, String model_name, String model_desc) {
 		super();
 		this.manu_code = manu_name;
 		this.model_code = model_code;
 		this.model_name = model_name;
 		this.model_desc = model_desc;
-		
+
 	}
+
+	/*
+	 * 
+	 * Getters and setters for Model Object
+	 * 
+	 */
 
 	public String getManu_code() {
 		return manu_code;
@@ -57,8 +66,4 @@ public class Model {
 		this.model_desc = model_desc;
 	}
 
-	
-	
-
 }
-

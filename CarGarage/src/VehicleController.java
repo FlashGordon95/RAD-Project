@@ -1,6 +1,4 @@
 
-
-
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -12,59 +10,61 @@ import javax.faces.context.FacesContext;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
-@ManagedBean
+@ManagedBean(name = "vehicleController")
 @SessionScoped
 public class VehicleController {
-	private ArrayList<Vehicle> models;
+	private ArrayList<Vehicle> vehicles;
 	private DAO dao;
-	
-	public VehicleController(){
-		try{
+	private String reg;
+
+	public VehicleController() {
+		try {
 			dao = new DAO();
-		} catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	public ArrayList<Vehicle> getModels(){
-		return models;
+
+	/*
+	 * 
+	 * Methods for ModelController Object
+	 * 
+	 */
+
+	// returns ArrayList of vehicles
+	public ArrayList<Vehicle> getModels() {
+		return vehicles;
 	}
-	
-	
-	public void addVehicle(Vehicle s) throws Exception{
-		try{
+
+	// attempt to call addVehicle method in DB, or throw exception message to
+	// user
+	public void addVehicle(Vehicle s) throws Exception {
+		try {
 			dao.addVehicle(s);
 			System.out.println("Vehicle is unique, adding to DB");
 			/* internal redirection */
 			FacesContext.getCurrentInstance().getExternalContext().redirect("manage_vehicles.xhtml");
-		}catch (MySQLIntegrityConstraintViolationException e) {
+		} catch (MySQLIntegrityConstraintViolationException e) {
 			FacesMessage message = new FacesMessage(e.getMessage());
 			FacesContext.getCurrentInstance().addMessage(null, message);
-		}
-		catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-	}
-	public void showDetails(Vehicle s) throws Exception{
-		try{
-			System.out.println("Redirecting");
-			
-			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 
-			Map<String, Object> requestMap = externalContext.getRequestMap();
-			requestMap.put("vehicle", s);	
-			/* internal redirection */
-			FacesContext.getCurrentInstance().getExternalContext().redirect("vehicleDetails.xhtml");
-		}
-		catch (Exception e){
-			e.printStackTrace();
-		}
-		
 	}
-	public ArrayList<Vehicle> loadVehicles() throws Exception{
-		return models = dao.getVehicleDetails();
-		
+
+	// attempt to call loadDetails method in DB, or throw exception
+	public ArrayList<Vehicle> loadDetails(String reg) throws Exception {
+		vehicles = dao.getSpecificVehicleDetails(reg);
+
+		return vehicles;
+	}
+
+	// attempt to call loadVehicles method in DB, or throw exception
+	public ArrayList<Vehicle> loadVehicles() throws Exception {
+		return vehicles = dao.getVehicleDetails();
+
 	}
 
 }

@@ -1,6 +1,4 @@
 
-
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -14,11 +12,15 @@ public class Vehicle {
 	private double price;
 	private String colour;
 	private String fuel;
-	
-	public Vehicle(){
-		
-	}
 
+	/*
+	 * 
+	 * Constructors for Vehicle Object
+	 * 
+	 */
+	public Vehicle() {
+
+	}
 
 	public Vehicle(String reg, String manu_code, String model_code, int mileage, double price, String colour,
 			String petrol) {
@@ -31,6 +33,12 @@ public class Vehicle {
 		this.colour = colour;
 		this.fuel = petrol;
 	}
+
+	/*
+	 * 
+	 * Getters and setters for Vehicle Object
+	 * 
+	 */
 	public String getReg() {
 		return reg;
 	}
@@ -79,19 +87,12 @@ public class Vehicle {
 		this.colour = colour;
 	}
 
-
 	public String getFuel() {
 		return fuel;
 	}
-
 
 	public void setFuel(String fuel) {
 		this.fuel = fuel;
 	}
 
-
-	
-	
-
 }
-

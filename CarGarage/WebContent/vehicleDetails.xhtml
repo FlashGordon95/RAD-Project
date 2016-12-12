@@ -7,18 +7,29 @@
 	  	  xmlns:f="http://xmlns.jcp.org/jsf/core"
       >
     <h:head>
-        <title>Catalog View</title>
+        <title>Show vehicle details</title>
+        
     </h:head>
-    <f:metadata>
-          <f:param name="Reg" value="#{v.reg}" />
-	   <f:param name="Manu_Code" value="#{v.manu_code}" />
-	   <f:param name="Model_Code" value="#{v.model_code}" />
-	   <f:param name="Mileage" value="#{v.mileage}" />
-	   <f:param name="Price" value="#{v.price}	" />
-	   <f:param name="Colour" value="#{v.colour}	" />
-	   <f:param name="Fuel" value="#{v.fuel}" />
-    </f:metadata>
+    
+    
     <h:body>
-        You requested catalog item: <h:outputText value="#{v.reg}"/>
+      <h:form>	
+			Registration: #{vehicleController.reg} <br />
+		
+			Manufacturer Code: #{vehicleController.manu_code} <br />
+		
+			Model Code: #{vehicleController.model_code} <br />
+		
+			Mileage: #{vehicleController.mileage}<br />
+		
+			Price: #{vehicleController.price}<br />
+	
+			Colour: #{vehicleController.colour}<br />
+	
+			Fuel: #{vehicleController.fuel}<br />
+	
+		<h:link value="Home" outcome="main" />
+	</h:form>
+       
     </h:body>
 </html>
