@@ -6,10 +6,11 @@
 		  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
 	  	  xmlns:f="http://xmlns.jcp.org/jsf/core"
       >
+      
     <h:head>
     <title>Vehicles</title>
-    	
-    </h:head>
+    	 <h:outputStylesheet library="css" name="style.css"  />
+    </h:head><!-- end head -->
 
     <h:body>
     	<h1>Vehicles</h1>
@@ -18,78 +19,70 @@
     			styleClass="order-table"
     			headerClass="order-table-header"
     			rowClasses="order-table-odd-row,order-table-even-row"
-    		>
+    	><!-- End datatable head -->
     	
 			<h:column>
     			<f:facet name="header">
     				Reg
 				</f:facet>
 				#{v.reg}	
-    		</h:column>
+    		</h:column><!-- column -->
     		<h:column>
     			<f:facet name="header">
     				Manufacturer Code
     			</f:facet>
     			#{v.manu_code}
-    		</h:column>
+    		</h:column><!-- column -->
 
     		<h:column>
     			<f:facet name="header">
     				Manufacturer Code
 				</f:facet>
 				#{v.model_code}	
-    		</h:column>
+    		</h:column><!-- column -->
 
  			<h:column>
     			<f:facet name="header">
     				Mileage
 				</f:facet>
     			#{v.mileage}	
-    		</h:column>
+    		</h:column><!-- column -->
     		<h:column>
     			<f:facet name="header">
     				Price
 				</f:facet>
     			#{v.price}	
-    		</h:column>
+    		</h:column><!-- column -->
     		<h:column>
     			<f:facet name="header">
     				Colour
 				</f:facet>
     			#{v.colour}	
-    		</h:column>
+    		</h:column><!-- column -->
     		<h:column>
     			<f:facet name="header">
     				Fuel
 				</f:facet>
     			#{v.fuel}	
-    		</h:column>
+    		</h:column><!-- column -->
     		
     		<h:column>
     			<f:facet name="header">
     				Action
 				</f:facet>
-    				<h:commandButton id="submit" 
-					   value="All Details" action="#{vehicleController.showDetails(v)}">
-					   <f:param name="Reg" value="#{v.reg}" />
-					   <f:param name="Manu_Code" value="#{v.manu_code}" />
-					   <f:param name="Model_Code" value="#{v.model_code}" />
-					   <f:param name="Mileage" value="#{v.mileage}" />
-					   <f:param name="Price" value="#{v.price}	" />
-					   <f:param name="Colour" value="#{v.colour}	" />
-					   <f:param name="Fuel" value="#{v.fuel}" />
-					</h:commandButton>
-    		<br/>
+				
+				<h:form>
+					<a href="vehicleDetails.xhtml?#{v.reg}">All Details</a><br />
+       			</h:form>
+    			<br/>
     		
-    		</h:column>
+    		</h:column><!-- column -->
     		
     		
     
     		
 
-    	</h:dataTable>
+    	</h:dataTable><!-- end datatable -->
  		<h:link value="Home" outcome="index" />
-
-    </h:body>
-
-</html>
+    </h:body><!-- end body -->
+</html><!-- html -->
